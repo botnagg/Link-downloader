@@ -2,7 +2,7 @@
 
 # --- CONFIG ---
 # Archivo .txt con links (uno por línea)
-LINKS_FILE="/mnt/c/Users/Nagore/Desktop/link_downloader/links.txt"
+LINKS_FILE="/mnt/c/Users/Nagore/Desktop/link_downloader/links_spotify.txt"
 
 # Carpeta de descargas
 DOWNLOAD_DIR="/mnt/c/Users/Nagore/Desktop/link_downloader/descargas"
@@ -25,7 +25,8 @@ while IFS= read -r LINK || [[ -n "$LINK" ]]; do
     echo "Descargando $count/$TOTAL: $LINK"
 
     # yt-dlp: extrae audio y convierte a mp3
-    yt-dlp -x --audio-format mp3 "$LINK" -o "$DOWNLOAD_DIR/%(title)s.%(ext)s"
+    spotdl download "$LINK" --output "$DOWNLOAD_DIR/%(title)s.%(ext)s"
+
 
     if [[ $? -eq 0 ]]; then
         echo "✅ Descarga completada."
