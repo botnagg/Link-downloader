@@ -1,41 +1,41 @@
 #!/usr/bin/env bash
 
-# --- CONFIG ---
-# Archivo .txt con links (uno por línea)
-LINKS_FILE="/mnt/c/Users/Nagore/Desktop/link_downloader/links_spotify.txt"
+# ------------ CONFIG ------------
+# Reads the .txt line by line
+LINKS_FILE="/link_downloader/links_spotify.txt"
 
-# Carpeta de descargas
-DOWNLOAD_DIR="/mnt/c/Users/Nagore/Desktop/link_downloader/descargas"
+# Folder to downloads
+DOWNLOAD_DIR="/link_downloader/descargas"
 mkdir -p "$DOWNLOAD_DIR"
 
-# --- LEER LINKS ---
+# ------------ READ URLs ------------
 if [[ ! -f "$LINKS_FILE" ]]; then
-    echo "Archivo $LINKS_FILE no encontrado!"
+    echo "File $LINKS_FILE not found!"
     exit 1
 fi
 
 TOTAL=$(wc -l < "$LINKS_FILE")
-echo "Hemos detectado $TOTAL link(s) en el archivo."
+echo "Total $TOTAL link(s) detected on the file."
 
-# --- DESCARGA ---
+# ------------ DOWNLOAD ------------
 count=0
 while IFS= read -r LINK || [[ -n "$LINK" ]]; do
     count=$((count + 1))
     echo ""
-    echo "Descargando $count/$TOTAL: $LINK"
+    echo "Downloading $count/$TOTAL: $LINK"
 
-    # yt-dlp: extrae audio y convierte a mp3
+    # yt-dlp: extracting audio and converting to MP3
     spotdl download "$LINK" --output "$DOWNLOAD_DIR/%(title)s.%(ext)s"
 
 
     if [[ $? -eq 0 ]]; then
-        echo "✅ Descarga completada."
+        echo "✅ Download complete."
     else
-        echo "❌ Error en la descarga."
+        echo "❌ Download error."
     fi
 
 done < "$LINKS_FILE"
 
 echo ""
-echo "Todas las descargas finalizadas. Pulsa ENTER para salir."
+echo "Download finalized. Press ENTER to exit."
 read

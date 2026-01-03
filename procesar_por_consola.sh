@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-# --- CONFIG ---
-# Carpeta de descargas
-DOWNLOAD_DIR="/mnt/c/Users/Nagore/Desktop/link_downloader/descargas"
+# ------------ CONFIG ------------
+# Download folder
+DOWNLOAD_DIR="/link_downloader/descargas"
 mkdir -p "$DOWNLOAD_DIR"
 
-# --- INPUT DEL LINK ---
-read -p "Introduce la URL a descargar: " LINK
+# ------------ ENTER THE URL ------------
+read -p "Enter the URL to download: " LINK
 
-# --- DESCARGA ---
-echo "Descargando: $LINK"
+# ------------ DOWNLOAD ------------
+echo "Downloading: $LINK"
 
 # yt-dlp con extracción de audio y conversión a mp3
 yt-dlp -x --audio-format mp3 "$LINK" -o "$DOWNLOAD_DIR/%(title)s.%(ext)s"
 
-# --- FIN ---
-echo "Descarga completada. Archivo guardado en $DOWNLOAD_DIR"
+# ------------ FIN ------------
+echo "Download complete. Downloaded in path: $DOWNLOAD_DIR"
