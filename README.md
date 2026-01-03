@@ -22,8 +22,9 @@ Before running the scripts, make sure the following tools are installed:
 ```bash
 git clone https://github.com/botnagg/Link-downloader.git
 cd Link-downloader
-
+```
 2. Intall dependencies:
+```bash
 # Install yt-dlp
 pip install -U yt-dlp
 
@@ -34,10 +35,12 @@ pip install -U spotdl
 # On Ubuntu/Debian:
 sudo apt install ffmpeg
 ```
-3. Prepare a .txt file with all the links you want to download. Example:
+3. Prepare a .txt file with all the links you want to download. 
+```bash
+Example:
 https://open.spotify.com/track/xxxx
 https://youtu.be/yyyy
-
+```
 4. Run the scripts: 
 ``` bash
 - bash procesar_links_spotify.sh   # Spotify links
