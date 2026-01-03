@@ -33,16 +33,17 @@ pip install -U spotdl
 # Make sure ffmpeg is installed
 # On Ubuntu/Debian:
 sudo apt install ffmpeg
-
+```
 3. Prepare a .txt file with all the links you want to download. Example:
 https://open.spotify.com/track/xxxx
 https://youtu.be/yyyy
 
 4. Run the scripts: 
+``` bash
 - bash procesar_links_spotify.sh   # Spotify links
 - bash procesar_links_yt.sh        # YouTube links
 - bash procesar_por_consola.sh     # Mixed or console-driven
-
+```
 ---
 
 ## Notes
